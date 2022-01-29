@@ -1,7 +1,8 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-
+use App\Http\Controllers\HomeController;
+use App\Http\Controllers\CursoController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -13,26 +14,13 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', HomeController::class);
 
-Route::get('cursos', function(){
-    return "hola mundo!";
-});
-Route::get('cursos/curso', function () {
-    return 'Hola mundo!';
-});
+Route::get('cursos', [CursoController::class, 'index']);
+Route::get('cursos/create', [CursoController::class, 'create']);
 
 // Route::get('cursos/{curso}', function($curso){
 //     return "Hola: $curso";
 // });
 
-Route::get('cursos/{curso}/{categoria?}', function ($curso, $categoria = null) {
-    
-    if ($categoria) {
-        return "Estamos en el curso $curso de la categoria $categoria";
-    }else {
-        return "Estamos en el curso $curso";
-    }
-});
+Route::get('cursos/{curso}/{categoria?}', [CursoController::class, 'show']);
