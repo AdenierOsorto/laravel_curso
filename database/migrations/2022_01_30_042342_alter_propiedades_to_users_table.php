@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CambiarPropiedadesToCursosTable extends Migration
+class AlterPropiedadesToUsersTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,8 +13,8 @@ class CambiarPropiedadesToCursosTable extends Migration
      */
     public function up()
     {
-        Schema::table('cursos', function (Blueprint $table) {
-            $table->string('name', 50)->nullable()->change();
+        Schema::table('users', function (Blueprint $table) {
+            $table->string('name',150)->change();
         });
     }
 
@@ -25,8 +25,8 @@ class CambiarPropiedadesToCursosTable extends Migration
      */
     public function down()
     {
-        Schema::table('cursos', function (Blueprint $table) {
-            $table->string('name', 255)->nullable(false)->change();
+        Schema::table('users', function (Blueprint $table) {
+            $table->string('name',255)->change();
         });
     }
 }
